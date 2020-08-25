@@ -1,3 +1,11 @@
 # depslib dependency file v1.0
 1598385593 source:c:\users\inceptix\documents\github\cis-3207\project 0\project_0\main.cpp
 
+1598396538 source:c:\users\inceptix\documents\github\cis-3207\project 0\project_0\wcat.cpp
+	<stdio.h>
+	<stdlib.h>
+
+1598395969 source:c:\users\inceptix\documents\github\cis-3207\project 0\project_0\wgrep.cpp
+	<stdio.h>
+	<stdlib.h>
+
