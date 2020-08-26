@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <string>
+#include <vector>
+#include <iostream>
 
+using namespace std;
 
+void search_stdin(const string& search_term);
 
 
 int main(int argc, char *argv[])
@@ -14,7 +20,7 @@ int main(int argc, char *argv[])
     //int i = 0;
 
     //terminate program if no arguments
-    if (argc <= 1)
+    if (argc == 1)
     {
         printf("wgrep: searchterm [file ...]\n");
         exit(1);
@@ -22,6 +28,10 @@ int main(int argc, char *argv[])
 
     char* search = argv[1];
 
+    if (argc == 2)
+    {
+        search_stdin(argv[1]);
+    }
 
     for (int i=2; i < argc; i++)
     {
@@ -37,8 +47,8 @@ int main(int argc, char *argv[])
 
         while (lineSize >= 0)
         {
-            size_t found = lineBuf.find(search);
-            if (found != string::npos)
+
+            if (strstr(lineBuf, search))
             {
                 printf("%s", lineBuf);
             }
@@ -54,4 +64,18 @@ int main(int argc, char *argv[])
     }
 
     exit(0);
+}
+
+void search_stdin(const string& search_term)
+{
+
+    vector<string> input;
+    string line;
+
+    while (getline(cin, line))
+        input.push_back(line);
+
+    for (auto & t : input)
+        if (t.find(search_term) != string::npos)
+            cout << t << std::endl;
 }
